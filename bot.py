@@ -1152,7 +1152,7 @@ async def encuesta_cmd(ctx, *, rest: str = None):
 @bot.event
 async def on_ready():
     logger.info(f"Bot listo! Conectado como {bot.user} (ID: {bot.user.id})")
-    await bot.change_presence(activity=discord.Game(name="Preparando Femb-Paradise"))
+    await bot.change_presence(activity=discord.Game(name="Escaneando Servidores🖥️"))
 
 @bot.event
 async def on_command_error(ctx: commands.Context, error: commands.CommandError):
@@ -1175,6 +1175,7 @@ if __name__ == "__main__":
 
 
    
+
 
 
 
