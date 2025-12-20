@@ -1153,8 +1153,9 @@ async def on_command_error(ctx: commands.Context, error: commands.CommandError):
 
 # ---------------- Run ----------------
 if __name__ == "__main__":
-    bot.run()
+    bot.run(TOKEN)
 
 
    
+
 
