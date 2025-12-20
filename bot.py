@@ -39,6 +39,24 @@ SUPERUSER_ID = 1382693027600007200
 if not BOT_TOKEN:
     raise SystemExit("BOT_TOKEN missing - configura tu .env")
 
+# ---------------- Koyeb health check ----------------
+from threading import Thread
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+PORT = int(os.getenv("PORT", 8000))
+
+class HealthHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+
+def start_web():
+    server = HTTPServer(("0.0.0.0", PORT), HealthHandler)
+    server.serve_forever()
+
+Thread(target=start_web, daemon=True).start()
+
 # ---------------- Logging ----------------
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s | %(levelname)s | %(message)s",
@@ -1157,6 +1175,7 @@ if __name__ == "__main__":
 
 
    
+
 
 
 
